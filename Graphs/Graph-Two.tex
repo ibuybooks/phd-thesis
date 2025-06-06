@@ -1,0 +1,136 @@
+\begin{tikzpicture}
+\begin{axis}[
+    height=1.5\textwidth,
+    width=\textwidth,
+    axis x line=bottom,
+    axis y line=left,
+    axis line style={-},
+    enlarge x limits=0.05,
+    xmode=log,
+    ymode=log,
+    xmin=512,
+    xmax=16384,
+    ymin=1,
+    ymax=7,
+    ytick={1,2,3,4,5,6,7},
+    yticklabels={1,2,3,4,5,6,7},
+    xtick={512,1024,2048,4096,8192},
+    xticklabels={2$^{9}$,2$^{10}$,2$^{11}$,2$^{12}$,2$^{13}$},
+    minor tick num=0,
+    xlabel={Time},
+    ylabel={Amplitude}
+]
+
+\addplot[only marks, mark=*, mark size=1pt, color=black] coordinates {
+(484.473392796994, 5.154371404524182)
+(583.7664022298974, 4.631726306379266)
+(692.7033586920346, 4.124722936292416)
+(989.5959201130876, 3.56152022889325)
+(1858.9321760543821, 2.553555376667845)
+(2065.2799963287357, 2.4881773489912424)
+(8732.88089123549, 1.0845901137960103)
+};
+
+\addplot[no markers, black, thick] table [
+            y={create col/linear regression={y=Y}},
+        ] {
+            X Y
+484.473392796994 5.154371404524182
+583.7664022298974 4.631726306379266
+692.7033586920346 4.124722936292416
+989.5959201130876 3.56152022889325
+1858.9321760543821 2.553555376667845
+2065.2799963287357 2.4881773489912424
+8732.88089123549 1.0845901137960103
+        }; 
+
+\addplot[only marks, mark=*, mark size=1pt, color=black] coordinates {
+(476.6543885636081, 5.555944992854687)
+(581.3915572955749, 5.063046392407869)
+(704.8402424186651, 4.577074560598036)
+(994.4981823178825, 3.9798454712667004)
+(2030.4584265600981, 2.865102603754915)
+(2201.54328499399, 2.709153812211149)
+(8766.200585647728, 1.342192620230919)
+};
+
+\addplot[no markers, black, thick] table [
+            y={create col/linear regression={y=Y}},
+        ] {
+            X Y
+476.6543885636081 5.555944992854687
+581.3915572955749 5.063046392407869
+704.8402424186651 4.577074560598036
+994.4981823178825 3.9798454712667004
+2030.4584265600981 2.865102603754915
+2201.54328499399 2.709153812211149
+8766.200585647728 1.342192620230919
+        }; 
+
+
+\addplot[only marks, mark=*, mark size=1pt, color=black] coordinates {
+(484.5533808541257, 6.705770062873648)
+(562.3578003154925, 6.290533457111426)
+(698.7598691365937, 5.726809780461477)
+(1020.1143273528011, 4.920255941710608)
+(2477.908979070812, 3.2897529295615016)
+(8624.803425059117, 1.9087671087524056)
+};
+
+\addplot[no markers, black, thick] table [
+            y={create col/linear regression={y=Y}},
+        ] {
+            X Y
+484.5533808541257 6.705770062873648
+562.3578003154925 6.290533457111426
+698.7598691365937 5.726809780461477
+1020.1143273528011 4.920255941710608
+2477.908979070812 3.2897529295615016
+8624.803425059117 1.9087671087524056
+        }; 
+
+
+
+
+    \draw [shorten >=2.5pt, shorten <=5pt] (7155.206427666167, 1.2587612021305639) -- ++(0:1cm) 
+    node[
+      anchor=west,
+      align=left,
+      text depth=0ex,
+      inner sep=0pt,
+      line width=1pt
+    ] {Young};
+
+        \draw [shorten >=2.5pt, shorten <=5pt] (5332.0033277324565, 1.7861805824247037) -- ++(0:1cm) 
+    node[
+      anchor=west,
+      align=left,
+      text depth=0ex,
+      inner sep=0pt,
+      line width=1pt
+    ] {Estrogen};
+
+        \draw [shorten >=2.5pt, shorten <=5pt] (8281.06371761685, 2.002608639918147) -- ++(0:1cm) 
+    node[
+      anchor=west,
+      align=left,
+      text depth=0ex,
+      inner sep=0pt,
+      line width=1pt
+    ] {Old};
+
+            \draw [shorten >=2.5pt, shorten <=5pt] (2477.908979070812, 3.2897529295615016) -- ++(20:1cm) 
+    node[
+      anchor=west,
+      align=left,
+      text depth=0ex,
+      inner sep=0pt,
+      line width=1pt
+    ] {Half Time};
+
+   \node at (rel axis cs:0.5,0.95) {NMR Spin Echo of Whole Uteri};
+
+   \node at (rel axis cs:0.5,0.925) {(Absolute amplitude is only an effect of sample size.)};
+
+\end{axis}
+\end{tikzpicture}

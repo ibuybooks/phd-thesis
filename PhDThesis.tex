@@ -1,0 +1,130 @@
+% ——————— DOCUMENT CLASS ———————
+\documentclass[12pt,a4paper,oneside,openright]{memoir}
+
+% ——————— PACKAGES ———————
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[version=4]{mhchem}
+\usepackage{pgfplots}
+\usepackage{changepage}
+\usepackage{pgfplotstable}
+\usepackage{epigraph} 
+\usepackage{adforn}
+\usepackage{hyperref}
+
+\pgfplotsset{compat=1.18}
+
+% ——————— FONTS & MICROTYPOGRAPHY ———————
+\usepackage[USenglish]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\usepackage{microtype}
+\usepackage{fontspec}
+\setmainfont{EBGaramond}[
+    Path = "Font/EBGaramond/",
+    Extension = .ttf,
+    UprightFont = EBGaramond-Regular,
+    BoldFont = EBGaramond-Bold,
+    ItalicFont = EBGaramond-Italic,
+    BoldItalicFont = EBGaramond-BoldItalic,
+    FontFace = {m}{n}{EBGaramond-Medium},
+    FontFace = {m}{it}{EBGaramond-MediumItalic},
+    FontFace = {sb}{n}{EBGaramond-SemiBold},
+    FontFace = {sb}{it}{EBGaramond-SemiBoldItalic},
+    FontFace = {eb}{n}{EBGaramond-ExtraBold},
+    FontFace = {eb}{it}{EBGaramond-ExtraBoldItalic},
+]
+
+% ——————— PAGE LAYOUT ———————
+\clubpenalty=10000
+\widowpenalty=10000
+
+\makeatletter
+\let\@afterindentfalse\@afterindenttrue
+\@afterindenttrue
+\makeatother
+
+\abnormalparskip{1ex plus 0.5ex minus 0.25ex}
+\setlength{\topskip}{0pt}
+
+% ——————— CHAPTER & SECTION STYLING ———————
+\makechapterstyle{myveelo}{%
+  \chapterstyle{default}%
+  \renewcommand*{\printchaptername}{}%
+  \renewcommand*{\chapternamenum}{}%
+  \renewcommand*{\printchapternum}{}%
+  \renewcommand*{\afterchapternum}{}%
+  \renewcommand*{\chaptitlefont}{\normalfont\Huge\scshape\centering}%
+  \setlength{\beforechapskip}{0pt}%
+  \setlength{\afterchapskip}{40pt}%
+  \renewcommand*{\printchaptertitle}[1]{%
+    \chaptitlefont ##1\par\vspace{20pt}\hrule}%
+}
+\chapterstyle{myveelo}
+
+\setsecheadstyle{\Large\scshape\raggedright}
+\setsubsecheadstyle{\large\scshape\raggedright}
+\setsubsubsecheadstyle{\normalsize\itshape\raggedright}
+
+\setaftersecskip{1.5\baselineskip}
+\setaftersubsecskip{1.2\baselineskip}
+\setaftersubsubsecskip{1\baselineskip}
+
+\setsecnumdepth{none}
+\maxsecnumdepth{none}
+
+% ——————— HEADERS & FOOTERS ———————
+\makeoddfoot{plain}{}{}{\thepage}
+\makepagestyle{style}
+\makeoddhead{style}{\scshape }{}{}
+\makeevenhead{style}{}{}{\scshape }
+\makeoddfoot{style}{}{}{\thepage}
+\makeevenfoot{style}{\thepage}{}{}
+\pagestyle{style}
+
+% ——————— TABLE OF CONTENTS & SPECIAL ELEMENTS ———————
+\setlength \epigraphwidth {\linewidth}
+\setlength \epigraphrule {0pt}
+\AtBeginDocument{\renewcommand {\epigraphflush}{center}}
+\renewcommand {\sourceflush} {center}
+
+\renewcommand{\cftdotsep}{1}
+
+\makeatletter
+\settowidth\@tempdima{0-}
+\edef\@pnumwidth{\the\@tempdima}
+\settowidth\@tempdimb{00}
+\edef\@pnumdouble{\the\@tempdimb}
+\makeatother
+
+\hypersetup{hidelinks}
+
+% ——————— BIBLIOGRAPHY ———————
+\usepackage[
+  sorting=none,
+  backend=biber
+]{biblatex}
+
+\addbibresource{FrontBack/Bibliography.bib}
+
+% ——————— MAIN DOCUMENT ———————
+\begin{document}
+\pagestyle{empty}
+\nocite{*}
+\input{FrontBack/Title.tex}
+\newpage
+\null
+\newpage
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents*
+\newpage
+\null
+\newpage
+\pagestyle{style}
+\setcounter{page}{1}
+\input{Chapters/Introduction.tex}
+\input{Chapters/Methods-and-Materials.tex}
+\input{Chapters/Results.tex}
+\input{Chapters/Discussion.tex}
+\input{Chapters/Conclusion.tex}
+\printbibliography[title=References]
+\end{document}
